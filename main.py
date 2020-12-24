@@ -22,16 +22,9 @@ print(data.shape) #will print out (rows, columns), in this case (transactions, n
 print(data.describe())
 
 data = data.sample(frac=0.1, random_state=1)
-
+#the above code reduces our dataset to a tenth of the size
 print(data.shape)
 
-# def print_hi(name):
-#     # Use a breakpoint in the code line below to debug your script.
-#     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-# if __name__ == '__main__':
-#     print_hi('Margie')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+#now we plot a histogram of each param
+data.hist(figsize=(20, 20))
+plt.show()
