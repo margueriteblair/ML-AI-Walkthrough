@@ -10,6 +10,10 @@ import scipy
 import sklearn
 
 print("Pandas:" + pd.__version__)
+print("Numpy:" + np.__version__)
+print("Seaborn:" + sns.__version__)
+print("Scipy:" + scipy.__version__)
+print("Sklearn:" + sklearn.__version__)
 
 data = pd.read_csv('creditcard.csv')
 
