@@ -26,5 +26,23 @@ data = data.sample(frac=0.1, random_state=1)
 print(data.shape)
 
 #now we plot a histogram of each param
-data.hist(figsize=(20, 20))
+# data.hist(figsize=(20, 20))
+# plt.show()
+#created a bunch of historgrams that show the relationship for each of the columns in our dataset
+#determine the acctual number of fraud cases indataset
+Fraud = data[data['Class'] == 1]
+Valid = data[data["Class"] == 0]
+
+outlier_fraction = len(Fraud)/float(len(Valid))
+print(outlier_fraction)
+print("Fraud cases: {}".format(len(Fraud)))
+print("Valid cases: {}".format(len(Valid)))
+
+#we should build a correlation matrix, this will tell us if there's a strong correlation between things in our dataset
+correlation_matrix = data.corr()
+fig = plt.figure(figsize=(12,9))
+
+sns.heatmap(correlation_matrix, vmax=.8, square=True)
 plt.show()
+
+
