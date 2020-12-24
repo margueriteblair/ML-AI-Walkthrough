@@ -1,7 +1,6 @@
 # This is a sample Python script.
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -15,9 +14,15 @@ print("Seaborn:" + sns.__version__)
 print("Scipy:" + scipy.__version__)
 print("Sklearn:" + sklearn.__version__)
 
+
 data = pd.read_csv('creditcard.csv')
 
-print(data.columns)
+print(data.columns) #this will tell us all of the columns
+print(data.shape) #will print out (rows, columns), in this case (transactions, numColumns)
+print(data.describe())
+
+data = data.sample(frac=0.1, random_state=1)
+
 print(data.shape)
 
 # def print_hi(name):
