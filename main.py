@@ -39,10 +39,27 @@ print("Fraud cases: {}".format(len(Fraud)))
 print("Valid cases: {}".format(len(Valid)))
 
 #we should build a correlation matrix, this will tell us if there's a strong correlation between things in our dataset
-correlation_matrix = data.corr()
-fig = plt.figure(figsize=(12,9))
+# correlation_matrix = data.corr()
+# fig = plt.figure(figsize=(12,9))
+# sns.heatmap(correlation_matrix, vmax=.8, square=True)
+# plt.show()
 
-sns.heatmap(correlation_matrix, vmax=.8, square=True)
-plt.show()
+columns = data.columns.tolist()
+#we get all the columns from the dataframe
+
+#filter the columns to remove the data that we don't want:
+columns = [c for c in columns if c not in ['Class']]
+
+#Store the variables that we'll be predicting
+target = 'Class'
+
+X = data[columns]
+Y = data[target]
+
+#then we print the shapes of X and Y
+print(X.shape)
+print(Y.shape)
+
+#anomoly detection
 
 
