@@ -9,14 +9,20 @@ import seaborn as sns
 import scipy
 import sklearn
 
+print("Pandas:" + pd.__version__)
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+data = pd.read_csv('creditcard.csv')
+
+print(data.columns)
+print(data.shape)
+
+# def print_hi(name):
+#     # Use a breakpoint in the code line below to debug your script.
+#     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
 
 
 # Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('Margie')
+# if __name__ == '__main__':
+#     print_hi('Margie')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
