@@ -92,6 +92,19 @@ for i, (clf_name, clf) in enumerate(classifiers.items()):
         y_pred = clf.predict(X)
         #we get 1 for inlier, -1 for outlier
 
+    #reshape the values for current fraud
+    y_pred[y_pred == 1] = 0
+    y_pred[y_pred == 0] = 1
+
+    n_errors = (y_pred != Y).sum()
+
+
+    #now run the classification metrocs
+    #about 30% of the time we'll detect fraud
+    print('{}: {}'.format(clf_name, n_errors))
+    print(accuracy_score(Y, y_pred))
+    print(classification_report(Y, y_pred))
+
 
 
 
