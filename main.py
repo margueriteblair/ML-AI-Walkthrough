@@ -57,9 +57,42 @@ X = data[columns]
 Y = data[target]
 
 #then we print the shapes of X and Y
+print("shapes: \n")
 print(X.shape)
 print(Y.shape)
 
 #anomoly detection
+from sklearn.metrics import classification_report, accuracy_score
+from sklearn.ensemble import IsolationForest
+from sklearn.neighbors import LocalOutlierFactor
+#these are two common anomoly detection methods ^^
+
+state = 1
+#define outlier detection methods
+classifiers = {
+    "Isolation Forest": IsolationForest(max_samples=len(X),
+                                        contamination=outlier_fraction,
+                                        random_state=state),
+    "Local Outlier Factor:": LocalOutlierFactor(
+        n_neighbors=20,
+        contamination=outlier_fraction
+    )
+}
+
+#now we need to fit the model
+n_outliers = len(Fraud)
+
+for i, (clf_name, clf) in enumerate(classifiers.items()):
+    if clf_name == "Local Outlier Factor":
+        y_pred = clf.fit_predict(X)
+        scores_pred = clf.negative_outlier_factor_
+    else:
+        clf.fix(X)
+        scores_pred = clf.decision_function(X)
+        y_pred = clf.predict(X)
+        #we get 1 for inlier, -1 for outlier
+
+
+
 
 
